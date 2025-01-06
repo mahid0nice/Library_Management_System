@@ -30,7 +30,13 @@ public class log extends JFrame{
         JTextField usernamefield = new JTextField();
         usernamefield.setBounds(150, 300, 200, 30);
         usernamefield.setFont(new Font(null,Font.BOLD,13));
-
+        JComboBox<String> login = new JComboBox<>(new String[]{
+            "Admin","Librarian"
+        });
+    
+        login.setBounds(350, 300, 100, 30);
+        
+        p.add(login);
         p.add(username);
         p.add(usernamefield);
 
