@@ -193,9 +193,9 @@ class NewPage extends JFrame implements ActionListener {
         if (e.getSource() == confirmButton) {
             if (termsCheckBox.isSelected()) {
                 try (BufferedWriter writer = new BufferedWriter(new FileWriter("D:\\learning_java\\Library_Management_System\\Members_information.txt", true))) {
-                    Encryption encryption = new Encryption(firstname_f.getText());
+                    
                     writer.write(
-                        encryption.main() + "," +lastname_f.getText()+ "," +contactnumber_f.getText() + "," +email_f.getText() + "," +dayComboBox.getSelectedItem() + "/" +
+                        firstname_f.getText() + "," +lastname_f.getText()+ "," +contactnumber_f.getText() + "," +email_f.getText() + "," +dayComboBox.getSelectedItem() + "/" +
                         monthComboBox.getSelectedItem() + "/" +yearComboBox.getSelectedItem() + "," +bloodGroupComboBox.getSelectedItem() + "," +instituteComboBox.getSelectedItem() + "," +
                         permanentaddress_f.getText() + "," +homeaddress_f.getText() + "," +fathersname_f.getText() + "," +mothersname_f.getText() + "," +membershipComboBox.getSelectedItem() + "," +fees_f.getText());
                     writer.newLine();

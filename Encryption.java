@@ -6,7 +6,7 @@ public class Encryption {
         this.password = password;
         } 
 
-        public String main(){
+        public String encrypt(){
         int length = this.password.length();
 
         char[] passwordArray = password.toCharArray();
