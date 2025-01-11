@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.awt.event.*;
 import javax.swing.*;
+import java.awt.Image;
 
 class NewPage extends JFrame implements ActionListener {
    
@@ -89,8 +90,8 @@ class NewPage extends JFrame implements ActionListener {
 
         JLabel homeAddress = new JLabel("Home Address:");
         homeAddress.setBounds(20, 330, 150, 15);
-       homeaddress_f = new JTextField();
-       homeaddress_f.setBounds(200, 330, 230, 20);
+        homeaddress_f = new JTextField();
+        homeaddress_f.setBounds(200, 330, 230, 20);
 
         JLabel fathersName = new JLabel("Father's Name:");
         fathersName.setBounds(20, 360, 150, 15);
