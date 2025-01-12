@@ -1,12 +1,15 @@
-package Library_Management_System;
+//package Library_Management_System;
+
+
+import javax.swing.*;
 
 import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.awt.event.*;
-import javax.swing.*;
-import java.awt.Image;
+
+
 
 class NewPage extends JFrame implements ActionListener {
    
@@ -22,8 +25,8 @@ class NewPage extends JFrame implements ActionListener {
         this.setSize(1000, 700);
         this.setLayout(null);
 
-        ImageIcon icon = new ImageIcon("D:\\learning_java\\Library_Management_System\\image.png");
-        ImageIcon i1 = new ImageIcon("D:\\learning_java\\Library_Management_System\\lib(1).jpg");
+        ImageIcon icon = new ImageIcon(getClass().getResource("/image.png"));
+        ImageIcon i1 = new ImageIcon(getClass().getResource("/lib(1).jpg"));
 
         this.setIconImage(icon.getImage());
 

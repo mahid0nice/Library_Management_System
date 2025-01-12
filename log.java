@@ -1,7 +1,12 @@
-package Library_Management_System;
+//package Library_Management_System;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class log extends JFrame{
     public log(){
@@ -59,18 +64,56 @@ public class log extends JFrame{
         Button b = new Button();
         b.setLabel("Login");
         b.setBounds(200, 400, 100, 30);
-        b.addActionListener(e -> {
-            String u1 = usernamefield.getText();
-            String p1 = new String(password1.getPassword());
+        
             
-            System.out.println("Username: " + u1);
-            System.out.println("Password: " + p1);
-            
-        });
+        
         p.add(b);
         this.add(p);
         this.add(l);
          
         this.setVisible(true);
-    }    
+
+        b.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                String select_role = (String) login.getSelectedItem();
+                String user_name = usernamefield.getText();
+                String password = new String(password1.getPassword());
+
+                if("Admin".equals(select_role)){
+                    if(validateCredentials(user_name,password)){
+                        JOptionPane.showMessageDialog(p, "Login Successfull!","Success",JOptionPane.INFORMATION_MESSAGE);
+                        new dashboard();
+                    }else{
+                        JOptionPane.showMessageDialog(p, "Invalid Username or Password !","Error",JOptionPane.ERROR_MESSAGE);
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(p, "Only Admin login is implemented.","Info",JOptionPane.INFORMATION_MESSAGE);
+                }
+
+            }
+
+        });
+    }
+    
+    private boolean validateCredentials(String username, String password) {
+        String admin_login = "D:\\learning_java\\Library_Management_System\\Admin_Login_info.txt";
+        try(BufferedReader bufferedreader = new BufferedReader(new FileReader(admin_login))){
+            String line;
+            while((line= bufferedreader.readLine())!= null){
+                String[] parts = line.split(",");
+                if(parts.length == 2){
+                    String U_name = parts[0].trim();
+                    String P_password = parts[1].trim();
+                    if(username.equals(U_name) && password.equals(P_password)){
+                        return true;
+                    }
+                }
+            }
+        }catch(IOException e){
+            JOptionPane.showMessageDialog(this, "Error reading credentials file: "+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE );
+        }
+        return false;
+    }
+
 }
