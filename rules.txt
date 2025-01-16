@@ -1,0 +1,64 @@
+General Rules
+
+    Library Membership:
+        Only registered members are allowed to borrow books.
+        Membership cards must be presented for entry and borrowing.
+
+    Conduct:
+        Maintain silence inside the library.
+        Use of mobile phones is prohibited or limited to silent mode.
+        Eating and drinking are not allowed in the library premises.
+
+    Use of Resources:
+        Handle books, furniture, and equipment with care.
+        Do not mark, write, or damage library books.
+        Keep the library clean; dispose of waste in designated bins.
+
+Borrowing Rules
+
+    Book Limit:
+        Members can borrow up to 2 books at a time.
+        Specific borrowing limits may apply for reference books or reserved materials.
+
+    Loan Period:
+        Books can be borrowed for a period of 7 days.
+        Renewals are allowed up to 2 times unless the book is reserved by another member.
+
+    Overdue Fines:
+        A fine of [Y amount] will be charged for each day a book is overdue.
+        Overdue fines must be cleared before borrowing additional materials.
+
+    Lost or Damaged Books:
+        The borrower is responsible for replacing lost or damaged books or paying the replacement cost.
+
+Library Usage
+
+    Timings:
+        The library is open from 8.00 am  to 6.00pm on [days].
+        The library is closed on Sunday.
+
+    Access to Facilities:
+        Computers and study rooms must be reserved in advance.
+        Wi-Fi access is provided for educational purposes only.
+
+    Restricted Sections:
+        Reference books, rare books, and archival materials are not for borrowing and can only be used within the library.
+
+Digital and Online Resources
+
+    Access:
+        Members can access e-books, journals, and databases through the library portal.
+        Login credentials must not be shared with others.
+
+    Printing and Photocopying:
+        Printing and photocopying are allowed within copyright limits.
+        Charges apply for these services.
+
+Disciplinary Actions
+
+    Violation of Rules:
+        Violating library rules may result in suspension or cancellation of membership.
+        Serious offenses (e.g., theft, vandalism) may involve legal action.
+
+    Right to Refuse:
+        The library reserves the right to refuse entry or services to anyone violating the rules.

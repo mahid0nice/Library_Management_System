@@ -83,7 +83,7 @@ public class log extends JFrame{
                 if("Admin".equals(select_role)){
                     if(validateCredentials(user_name,password)){
                         JOptionPane.showMessageDialog(p, "Login Successfull!","Success",JOptionPane.INFORMATION_MESSAGE);
-                        new dashboard();
+                        new Admin_dashboard();
                     }else{
                         JOptionPane.showMessageDialog(p, "Invalid Username or Password !","Error",JOptionPane.ERROR_MESSAGE);
                     }

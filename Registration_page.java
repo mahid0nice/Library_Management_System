@@ -19,9 +19,9 @@ class NewPage extends JFrame implements ActionListener {
     JCheckBox termsCheckBox;
     JButton confirmButton, cancelButton;
 
-    NewPage() {
+    public NewPage() {
         
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setSize(1000, 700);
         this.setLayout(null);
 
