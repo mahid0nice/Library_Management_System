@@ -1,13 +1,11 @@
 //package Library_Management_System;
 
-
-import javax.swing.*;
-
 import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.awt.event.*;
+import javax.swing.*;
 
 
 
@@ -19,14 +17,14 @@ class NewPage extends JFrame implements ActionListener {
     JCheckBox termsCheckBox;
     JButton confirmButton, cancelButton;
 
-    public NewPage() {
+    NewPage() {
         
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(1000, 700);
         this.setLayout(null);
 
-        ImageIcon icon = new ImageIcon(getClass().getResource("/image.png"));
-        ImageIcon i1 = new ImageIcon(getClass().getResource("/lib(1).jpg"));
+        ImageIcon icon = new ImageIcon("D:\\learning_java\\Library_Management_System\\image.png");
+        ImageIcon i1 = new ImageIcon("D:\\learning_java\\Library_Management_System\\lib(1).jpg");
 
         this.setIconImage(icon.getImage());
 
@@ -93,8 +91,8 @@ class NewPage extends JFrame implements ActionListener {
 
         JLabel homeAddress = new JLabel("Home Address:");
         homeAddress.setBounds(20, 330, 150, 15);
-        homeaddress_f = new JTextField();
-        homeaddress_f.setBounds(200, 330, 230, 20);
+       homeaddress_f = new JTextField();
+       homeaddress_f.setBounds(200, 330, 230, 20);
 
         JLabel fathersName = new JLabel("Father's Name:");
         fathersName.setBounds(20, 360, 150, 15);

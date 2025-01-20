@@ -1,7 +1,7 @@
 //package Library_Management_System;
 
 
-class loginpage{
+class LoginPage{
     public static void main(String[] args){
         new log();
         //new NewPage();

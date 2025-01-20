@@ -1,8 +1,0 @@
-mahid,afa,afa,afa,1/January/1990,A+,College,faf,af,af,af,Weekly,af
-mahid,Library_Management_System.Encryption@2d45a515,,,1/January/1990,A+,University,,,,,Weekly,
-rfmni,,,,1/January/1990,A+,University,,,,,Weekly,
-mahid,,,,1/January/1990,A+,University,,,,,Weekly,
-,,,,1/January/1990,A+,University,,,,,Weekly,
-mahid,,,,1/January/1990,A+,University,,,,,Monthly,
-kjnb;ojn ,jhvbikb;,,,1/January/1990,A+,University,,,,,Weekly,
-mahid ,rahman,01782312829,sarkarmahid1127@gmail.com,1/January/1990,A+,University,,,,,Monthly,
