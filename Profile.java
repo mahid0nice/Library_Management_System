@@ -88,6 +88,13 @@ class ProfilePanel extends JPanel {
         try (BufferedReader read = new BufferedReader(new FileReader("D:\\learning_java\\java_learning\\admin.txt"))){
             String line;
             while ((line = read.readLine())!= null){
+
+                // Assuming the profile photo path is also stored in the file
+                String photoPath = line.split(",")[4];
+                if (!photoPath.isEmpty()) {
+                    image_of_admin = new ImageIcon(photoPath);
+                    picture.setIcon(image_of_admin);
+                }
                 String name = line.split(",")[0];
                 String Gmail = line.split(",")[1];
                 String Address = line.split(",")[2];
@@ -115,4 +122,5 @@ class ProfilePanel extends JPanel {
         this.add(scrollpane_4);
     }
 }
+
 

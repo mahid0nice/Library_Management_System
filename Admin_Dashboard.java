@@ -185,6 +185,13 @@ class Admin_dashboard extends JFrame implements ActionListener {
             largestpanel.revalidate();
             largestpanel.repaint();
         }
+        if(e.getSource() == edit_profile){
+            largestpanel.removeAll();
+            largestpanel.add(new UpdateProfileWithPhoto());
+            largestpanel.revalidate();
+            largestpanel.repaint();
+        }
+        
         
     
 }public static void main(String[] args){

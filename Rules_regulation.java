@@ -30,7 +30,7 @@ import java.io.IOException;
         
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(null); 
-        buttonPanel.setPreferredSize(new Dimension(1620, 50)); 
+        buttonPanel.setPreferredSize(new Dimension(1620, 120)); 
 
         save = new JButton("Save");
         save.setBounds(750, 10, 90, 20); 
