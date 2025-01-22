@@ -9,11 +9,11 @@ import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
- class Rules_regulation extends JPanel implements ActionListener {
+class Rules_by_admin extends JPanel implements ActionListener {
     private JTextArea rule;
     private JButton save, edit;
 
-    Rules_regulation() {
+    Rules_by_admin() {
         this.setBounds(0, 0, 1620, 980); 
         this.setBackground(Color.LIGHT_GRAY);
         this.setLayout(new BorderLayout());
@@ -48,7 +48,7 @@ import java.io.IOException;
     }
 
     private void rules_and_regulation_call() {
-        try (BufferedReader reader = new BufferedReader(new FileReader("D:\\learning_java\\Library_Management_System\\rules.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("Library_Management_System/new_rules.txt"))) {
             StringBuilder content = new StringBuilder();
             String line;
             while ((line = reader.readLine()) != null) {
@@ -62,7 +62,7 @@ import java.io.IOException;
     }
 
     private void saverules() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("D:\\learning_java\\Library_Management_System\\rules.txt"))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Library_Management_System/new_rules.txt"))) {
             writer.write(rule.getText());
             JOptionPane.showMessageDialog(this, "Rules saved successfully.", 
                     "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -86,12 +86,5 @@ import java.io.IOException;
         }
     }
 
-    /*public static void main(String[] args) {
-        JFrame frame = new JFrame("Library Management System - Rules and Regulations");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1620, 1010); 
-        frame.add(new Rules_regulation());
-        frame.setVisible(true);
-    }
-         */
+        
 }

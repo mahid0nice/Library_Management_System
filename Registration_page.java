@@ -187,6 +187,7 @@ class NewPage extends JFrame implements ActionListener {
 
         this.add(leftPanel);
         this.add(rightPanel);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setVisible(true);
     }
 

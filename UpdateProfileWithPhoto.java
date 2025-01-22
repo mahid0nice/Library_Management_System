@@ -156,7 +156,7 @@ public class UpdateProfileWithPhoto extends JPanel {
          private JTextField adminNumberField;
          private JButton updateButton, uploadPhotoButton;
          private JLabel profilePhotoLabel;
-         private String photoPath = "D:\\learning_java\\Library_Management_System\\profile.jpg"; // Default profile photo path
+         private String photoPath = "D:\\learning_java\\Library_Management_System\\Admin_Photo_path.txt"; // Default profile photo path
      
          public UpdateProfileWithPhoto() {
              this.setBounds(0, 0, 800, 600);
@@ -179,28 +179,28 @@ public class UpdateProfileWithPhoto extends JPanel {
              adminNameLabel.setBounds(250, 50, 100, 30);
              this.add(adminNameLabel);
      
-             adminInfoField = createTextField(350, 50, 300, 30);
+             adminInfoField = createTextField(450, 50, 300, 30);
      
              JLabel adminEmailLabel = new JLabel("Email:");
              adminEmailLabel.setFont(new Font("Courier New", Font.BOLD, 16));
              adminEmailLabel.setBounds(250, 100, 100, 30);
              this.add(adminEmailLabel);
      
-             adminEmailField = createTextField(350, 100, 300, 30);
+             adminEmailField = createTextField(450, 100, 300, 30);
      
              JLabel adminAddressLabel = new JLabel("Address:");
              adminAddressLabel.setFont(new Font("Courier New", Font.BOLD, 16));
              adminAddressLabel.setBounds(250, 150, 100, 30);
              this.add(adminAddressLabel);
      
-             adminAddressField = createTextField(350, 150, 300, 30);
+             adminAddressField = createTextField(450, 150, 300, 30);
      
              JLabel adminNumberLabel = new JLabel("Phone Number:");
              adminNumberLabel.setFont(new Font("Courier New", Font.BOLD, 16));
              adminNumberLabel.setBounds(250, 200, 150, 30);
              this.add(adminNumberLabel);
      
-             adminNumberField = createTextField(350, 200, 300, 30);
+             adminNumberField = createTextField(450, 200, 300, 30);
      
              loadProfileData();
      
@@ -279,13 +279,6 @@ public class UpdateProfileWithPhoto extends JPanel {
              }
          }
      
-         public static void main(String[] args) {
-             JFrame frame = new JFrame("Update Profile with Photo");
-             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-             frame.setSize(800, 600);
-             frame.add(new UpdateProfileWithPhoto());
-             frame.setVisible(true);
-         }
      }
        
 

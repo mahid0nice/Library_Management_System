@@ -4,16 +4,16 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-class Admin_dashboard extends JFrame implements ActionListener {
-    JButton profileButton,stock_books,
+class Librarian_dashboard extends JFrame implements ActionListener {
+    JButton profileButton,
             number_of_members,add_member,
-            add_librarian,fees_for_member,
-            rules_regulation,name_of_writer,
+            fees_for_member,
+            name_of_writer,
             books_title,rent_book,Sold_Book,
             edit_profile,log_out ;
     JPanel largestpanel;
     ImageIcon icon,loogo,dashboard;
-    public Admin_dashboard(){
+    public Librarian_dashboard(){
         icon= new ImageIcon("D:\\learning_java\\Library_Management_System\\image.png");
         loogo= new ImageIcon("D:\\learning_java\\Library_Management_System\\logo1(1).jpg"); 
         this.setSize(1920,1080);
@@ -44,12 +44,7 @@ class Admin_dashboard extends JFrame implements ActionListener {
         profileButton.setBackground(new Color(66, 200, 245));
         profileButton.addActionListener(this);
 
-        stock_books = new JButton();
-        stock_books.setText("Stock Check");
-        stock_books.setPreferredSize(new java.awt.Dimension(200, 40));
-        stock_books.setBounds(10,160,300,40);
-        stock_books.setBackground(new Color(66, 200, 245));
-        stock_books.addActionListener(this);
+        
 
         number_of_members = new JButton();
         number_of_members.setText("Member list");
@@ -65,33 +60,17 @@ class Admin_dashboard extends JFrame implements ActionListener {
         add_member.setBackground(new Color(66, 200, 245));
         add_member.addActionListener(this);
 
-        add_librarian = new JButton();
-        add_librarian.setText("Add Librarian");
-        add_librarian.setPreferredSize(new java.awt.Dimension(200, 40));
-        add_librarian.setBounds(10,400,300,40);
-        add_librarian.setBackground(new Color(66, 200, 245));
-        add_librarian.addActionListener(this);
-
-        fees_for_member  = new JButton();
-        fees_for_member.setText("Fees For Member");
-        fees_for_member.setPreferredSize(new java.awt.Dimension(200, 40));
-        fees_for_member.setBounds(10,480,300,40);
-        fees_for_member.setBackground(new Color(66, 200, 245));
-        fees_for_member.addActionListener(this);
-
-        rules_regulation  = new JButton();
-        rules_regulation.setText("Rules And Regulation");
-        rules_regulation.setPreferredSize(new java.awt.Dimension(200, 40));
-        rules_regulation.setBounds(10,560,300,40);
-        rules_regulation.setBackground(new Color(66, 200, 245));
-        rules_regulation.addActionListener(this); 
         
+
         name_of_writer = new JButton();
         name_of_writer.setText("Writer List");
         name_of_writer.setPreferredSize(new java.awt.Dimension(200, 40));
-        name_of_writer.setBounds(10,640,300,40);
+        name_of_writer.setBounds(10,480,300,40);
         name_of_writer.setBackground(new Color(66, 200, 245));
         name_of_writer.addActionListener(this);
+
+        
+        
 
         books_title = new JButton();
         books_title.setText("Books Title");
@@ -141,12 +120,11 @@ class Admin_dashboard extends JFrame implements ActionListener {
     
       
         leftpanel.add(profileButton);
-        leftpanel.add(stock_books);
+        //leftpanel.add(stock_books);
         leftpanel.add(add_member);
         leftpanel.add(number_of_members);
-        leftpanel.add(add_librarian);
-        leftpanel.add(fees_for_member);
-        leftpanel.add(rules_regulation);
+        //leftpanel.add(add_librarian);
+        //leftpanel.add(fees_for_member);
         leftpanel.add(name_of_writer);
         leftpanel.add(books_title);
         leftpanel.add(rent_book);
@@ -165,7 +143,7 @@ class Admin_dashboard extends JFrame implements ActionListener {
         this.add(largestpanel);
         
 
-        this.setTitle("Admin Dashboard");
+        this.setTitle("Librarian Dashboard");
         this.setVisible(true);
     }
     
@@ -179,12 +157,7 @@ class Admin_dashboard extends JFrame implements ActionListener {
         }if (e.getSource()== add_member){
             new NewPage();
         }
-        if(e.getSource() == rules_regulation){
-            largestpanel.removeAll();
-            largestpanel.add(new Rules_by_admin());
-            largestpanel.revalidate();
-            largestpanel.repaint();
-        }
+        
         if(e.getSource() == edit_profile){
             largestpanel.removeAll();
             largestpanel.add(new UpdateProfileWithPhoto());
@@ -197,6 +170,12 @@ class Admin_dashboard extends JFrame implements ActionListener {
         }
         
         
+    
+}
+
+public static void main(String[] args){
+
+    new Librarian_dashboard ();
     
 }
 }
