@@ -199,4 +199,7 @@ class Admin_dashboard extends JFrame implements ActionListener {
         
     
 }
+public static void main(String[] args) {
+    new Admin_dashboard();
+}
 }

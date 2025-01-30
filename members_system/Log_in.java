@@ -1,4 +1,6 @@
-//package Library_Management_System;
+package members_system;
+
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,8 +9,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
- class alogin extends JFrame {
-    public alogin() {
+class Member_Login extends JFrame {
+    Member_Login() {
         ImageIcon i = new ImageIcon("D:\\learning_java\\Library_Management_System\\image.png");
         ImageIcon i1 = new ImageIcon("D:\\learning_java\\Library_Management_System\\lib(1).jpg");
 
@@ -19,11 +21,17 @@ import java.io.IOException;
         p.setBounds(500, 0, 500, 700);
         p.setBackground(Color.LIGHT_GRAY);
 
-        JLabel textLabel = new JLabel("Welcome to our Library");
-        textLabel.setBounds(50, 100, 400, 30);
-        textLabel.setFont(new Font("Arial", Font.BOLD, 30));
+        JLabel textLabel1 = new JLabel("Members profile Check Or ");
+        textLabel1.setBounds(50, 100, 400, 30);
+        textLabel1.setFont(new Font("Arial", Font.BOLD, 30));
+
+        JLabel textLabel2 = new JLabel("Create Membership");
+        textLabel2.setBounds(50, 150, 400, 30);
+        textLabel2.setFont(new Font("Arial", Font.BOLD, 30));
+
         p.setLayout(null);
-        p.add(textLabel);
+        p.add(textLabel1);
+        p.add(textLabel2);
 
         JLabel username = new JLabel("Username :");
         username.setFont(new Font(null, Font.BOLD, 15));
@@ -33,12 +41,6 @@ import java.io.IOException;
         usernamefield.setBounds(150, 300, 200, 30);
         usernamefield.setFont(new Font(null, Font.BOLD, 13));
 
-        JComboBox<String> login = new JComboBox<>(new String[]{
-            "Admin", "Librarian"
-        });
-        login.setBounds(350, 300, 100, 30);
-
-        p.add(login);
         p.add(username);
         p.add(usernamefield);
 
@@ -58,43 +60,45 @@ import java.io.IOException;
         this.setIconImage(i.getImage());
 
         JButton b = new JButton("Login");
-        b.setBounds(200, 400, 100, 30);
+        b.setBounds(150, 400, 100, 30);
+        JButton b2 = new JButton("Sign up");
+        b2.setBounds(300, 400, 100, 30);
 
         p.add(b);
+        p.add(b2);
+
         this.add(p);
         this.add(l);
-
+        this.setTitle("Members Checkout");
         this.setVisible(true);
 
-        addEnterKeyNavigation(usernamefield, password1);
-        addEnterKeyNavigation(password1, b);
+        // Add Enter key navigation
+        this.addEnterKeyNavigation(usernamefield, password1);
+        this.addEnterKeyNavigation(password1, b);
 
+        // Login Button Action
         b.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String select_role = (String) login.getSelectedItem();
                 String user_name = usernamefield.getText();
                 String password = new String(password1.getPassword());
 
-                if ("Admin".equals(select_role)) {
-                    if (validateCredentials(user_name, password)) {
-                        JOptionPane.showMessageDialog(p, "Login Successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
-                        new Admin_dashboard().setVisible(true);
-                        dispose(); 
-                    } else {
-                        JOptionPane.showMessageDialog(p, "Invalid Username or Password!", "Error", JOptionPane.ERROR_MESSAGE);
-                    }
-                } else if("Librarian".equals(select_role)) {
-                    if (validateCredentials(user_name, password)) {
-                        JOptionPane.showMessageDialog(p, "Login Successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
-                        new Librarian_dashboard().setVisible(true);
-                        dispose(); 
-                    } else {
-                        JOptionPane.showMessageDialog(p, "Invalid Username or Password!", "Error", JOptionPane.ERROR_MESSAGE);
-                    }
-                    
-                    
+                if (validateCredentials(user_name, password)) {
+                    // Show success message
+                    JOptionPane.showMessageDialog(p, "Login Successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(p, "Invalid Username or Password!", "Error", JOptionPane.ERROR_MESSAGE);
                 }
+            }
+        });
+
+        // Sign Up Button Action
+        b2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Open the registration page
+                new Member_Registration().setVisible(true);
+                dispose(); // Close the current login window
             }
         });
     }
@@ -104,7 +108,7 @@ import java.io.IOException;
         currentComponent.getActionMap().put("moveFocus", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                nextComponent.requestFocus(); 
+                nextComponent.requestFocus();
             }
         });
     }
@@ -130,6 +134,6 @@ import java.io.IOException;
     }
 
     public static void main(String[] args) {
-        new alogin();
+        new Member_Login();
     }
 }
