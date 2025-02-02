@@ -155,7 +155,7 @@ class Librarian_dashboard extends JFrame implements ActionListener {
             largestpanel.revalidate();
             largestpanel.repaint();
         }if (e.getSource()== add_member){
-            new NewPage();
+            new aNewPage();
         }
         
         if(e.getSource() == edit_profile){

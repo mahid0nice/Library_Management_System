@@ -72,11 +72,9 @@ class Member_Login extends JFrame {
         this.setTitle("Members Checkout");
         this.setVisible(true);
 
-        // Add Enter key navigation
         this.addEnterKeyNavigation(usernamefield, password1);
         this.addEnterKeyNavigation(password1, b);
 
-        // Login Button Action
         b.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -84,7 +82,6 @@ class Member_Login extends JFrame {
                 String password = new String(password1.getPassword());
 
                 if (validateCredentials(user_name, password)) {
-                    // Show success message
                     JOptionPane.showMessageDialog(p, "Login Successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     JOptionPane.showMessageDialog(p, "Invalid Username or Password!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -92,13 +89,11 @@ class Member_Login extends JFrame {
             }
         });
 
-        // Sign Up Button Action
         b2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Open the registration page
-                new Member_Registration().setVisible(true);
-                dispose(); // Close the current login window
+                new memberregistration().setVisible(true);
+                dispose(); 
             }
         });
     }

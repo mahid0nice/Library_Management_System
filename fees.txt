@@ -1,0 +1,3 @@
+Weekly:100
+Monthly:300
+Yearly:1000

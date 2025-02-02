@@ -3,21 +3,23 @@
 import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.awt.event.*;
 import javax.swing.*;
 
 
 
-class NewPage extends JFrame implements ActionListener {
+class aNewPage extends JFrame implements ActionListener {
    
-    JTextField firstname_f, lastname_f, contactnumber_f, email_f,permanentaddress_f,homeaddress_f, fathersname_f, mothersname_f, fees_f;
+    JTextField firstname_f, lastname_f, contactnumber_f, email_f,permanentaddress_f,homeaddress_f, fathersname_f, mothersname_f, fees_f,Voter_id;
     JComboBox<Integer> dayComboBox, yearComboBox;
     JComboBox<String> monthComboBox, bloodGroupComboBox, instituteComboBox, membershipComboBox;
     JCheckBox termsCheckBox;
     JButton confirmButton, cancelButton;
 
-    NewPage() {
+    aNewPage() {
         
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(1000, 700);
@@ -38,20 +40,40 @@ class NewPage extends JFrame implements ActionListener {
         firstname_f = new JTextField();
         firstname_f.setBounds(200, 60, 230, 20);
 
+        JLabel X1 = new JLabel("*");
+        X1.setBounds(440,60,10,10);
+
         JLabel lastName = new JLabel("Last Name:");
         lastName.setBounds(20, 90, 100, 15);
         lastname_f = new JTextField();
         lastname_f.setBounds(200, 90, 230, 20);
+
+        JLabel X2 = new JLabel("*");
+        X2.setBounds(440,90,10,10);
 
         JLabel contactNumber = new JLabel("Contact Number:");
         contactNumber.setBounds(20, 120, 100, 15);
         contactnumber_f = new JTextField();
         contactnumber_f.setBounds(200, 120, 230, 20);
 
+        JLabel X3 = new JLabel("*");
+        X3.setBounds(440,120,10,10);
+
         JLabel email = new JLabel("Email:");
         email.setBounds(20, 150, 100, 15);
         email_f = new JTextField();
         email_f.setBounds(200, 150, 230, 20);
+
+        JLabel X4 = new JLabel("*");
+        X4.setBounds(440,150,10,10);
+
+        JLabel voterpin = new JLabel("Voter ID:");
+        voterpin.setBounds(20,180,100,15);
+        Voter_id = new JTextField();
+        Voter_id.setBounds(200,180,230,20);
+
+        JLabel X5 = new JLabel("*");
+        X5.setBounds(440,180,10,10);
 
         JLabel dob = new JLabel("Date of Birth:");
         dob.setBounds(20, 210, 100, 15);
@@ -89,6 +111,9 @@ class NewPage extends JFrame implements ActionListener {
         permanentaddress_f = new JTextField();
         permanentaddress_f.setBounds(200, 300, 230, 20);
 
+        JLabel X6 = new JLabel("*");
+        X6.setBounds(440,300,10,10);
+
         JLabel homeAddress = new JLabel("Home Address:");
         homeAddress.setBounds(20, 330, 150, 15);
        homeaddress_f = new JTextField();
@@ -108,6 +133,13 @@ class NewPage extends JFrame implements ActionListener {
         membership.setBounds(20, 420, 150, 15);
         membershipComboBox = new JComboBox<>(new String[]{"Weekly", "Monthly", "Yearly"});
         membershipComboBox.setBounds(200, 420, 150, 20);
+
+        membershipComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                updateFeesBasedOnMembership();
+            }
+        });
 
         JLabel fees = new JLabel("Fees:");
         fees.setBounds(20, 450, 150, 15);
@@ -137,15 +169,23 @@ class NewPage extends JFrame implements ActionListener {
         
         leftPanel.add(firstName);
         leftPanel.add(firstname_f);
+        leftPanel.add(X1);
 
         leftPanel.add(lastName);
         leftPanel.add(lastname_f);
+        leftPanel.add(X2);
 
         leftPanel.add(contactNumber);
         leftPanel.add(contactnumber_f);
+        leftPanel.add(X3);
 
         leftPanel.add(email);
         leftPanel.add(email_f);
+        leftPanel.add(X4);
+
+        leftPanel.add(voterpin);
+        leftPanel.add(Voter_id);
+        leftPanel.add(X5);
 
         leftPanel.add(dob);
 
@@ -161,6 +201,7 @@ class NewPage extends JFrame implements ActionListener {
 
         leftPanel.add(permanentAddress);
         leftPanel.add(permanentaddress_f);
+        leftPanel.add(X6);
 
         leftPanel.add(homeAddress);
         leftPanel.add(homeaddress_f);
@@ -187,14 +228,32 @@ class NewPage extends JFrame implements ActionListener {
 
         this.add(leftPanel);
         this.add(rightPanel);
+        this.setTitle("Registration Page");
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setVisible(true);
+    }
+    private void updateFeesBasedOnMembership() {
+        String selectedMembership = (String) membershipComboBox.getSelectedItem();
+        if (selectedMembership != null) {
+            try (BufferedReader reader = new BufferedReader(new FileReader("D:\\learning_java\\Library_Management_System\\fees.txt"))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    String[] parts = line.split(":");
+                    if (parts[0].trim().equalsIgnoreCase(selectedMembership)) {
+                        fees_f.setText(parts[1].trim());
+                        break;
+                    }
+                }
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(this, "Error reading fees: " + ex.getMessage());
+            }
+        }
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == confirmButton) {
-            if (termsCheckBox.isSelected()) {
+            if (termsCheckBox.isSelected() && !firstname_f.getText().isEmpty() && !lastname_f.getText().isEmpty() && !contactnumber_f.getText().isEmpty() && !email_f.getText().isEmpty() && !permanentaddress_f.getText().isEmpty() && !Voter_id.getText().isEmpty()) {
                 try (BufferedWriter writer = new BufferedWriter(new FileWriter("D:\\learning_java\\Library_Management_System\\Members_information.txt", true))) {
                     
                     writer.write(
@@ -207,10 +266,14 @@ class NewPage extends JFrame implements ActionListener {
                     JOptionPane.showMessageDialog(this, "Error saving data: " + ex.getMessage());
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "Please accept the terms and conditions.");
+                JOptionPane.showMessageDialog(this, "Please accept the terms and conditions and fill in all the required fields.");
             }
         } else if (e.getSource() == cancelButton) {
             this.dispose();
         }
+    }
+
+    public static void main(String[] args){
+        new aNewPage();
     }
 }

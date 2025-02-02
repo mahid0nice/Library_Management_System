@@ -177,7 +177,7 @@ class Admin_dashboard extends JFrame implements ActionListener {
             largestpanel.revalidate();
             largestpanel.repaint();
         }if (e.getSource()== add_member){
-            new NewPage();
+            new aNewPage();
         }
         if(e.getSource() == rules_regulation){
             largestpanel.removeAll();
