@@ -1,6 +1,5 @@
 package members_system;
 
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -92,8 +91,8 @@ class Member_Login extends JFrame {
         b2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new memberregistration().setVisible(true);
-                dispose(); 
+                new aMemberRegistration().setVisible(true);
+                dispose();
             }
         });
     }
@@ -109,23 +108,23 @@ class Member_Login extends JFrame {
     }
 
     private boolean validateCredentials(String username, String password) {
-        String admin_login = "D:\\learning_java\\Library_Management_System\\Admin_Login_info.txt";
-        try (BufferedReader bufferedreader = new BufferedReader(new FileReader(admin_login))) {
+        String memberPasswordFile = "D:\\learning_java\\Library_Management_System\\memberpassword.txt";
+        try (BufferedReader bufferedreader = new BufferedReader(new FileReader(memberPasswordFile))) {
             String line;
             while ((line = bufferedreader.readLine()) != null) {
                 String[] parts = line.split(",");
                 if (parts.length == 2) {
-                    String U_name = parts[0].trim();
-                    String P_password = parts[1].trim();
-                    if (username.equals(U_name) && password.equals(P_password)) {
-                        return true;
+                    String storedUsername = parts[0].trim();
+                    String storedPassword = parts[1].trim();
+                    if (username.equals(storedUsername) && password.equals(storedPassword)) {
+                        return true; 
                     }
                 }
             }
         } catch (IOException e) {
             JOptionPane.showMessageDialog(this, "Error reading credentials file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-        return false;
+        return false; 
     }
 
     public static void main(String[] args) {

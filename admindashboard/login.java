@@ -1,5 +1,9 @@
+package admindashboard;
 //package Library_Management_System;
 import javax.swing.*;
+
+//import Librarian_dashboard;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -79,7 +83,7 @@ import java.io.IOException;
                 if ("Admin".equals(select_role)) {
                     if (validateCredentials(user_name, password)) {
                         JOptionPane.showMessageDialog(p, "Login Successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
-                        new Admin_dashboard().setVisible(true);
+                        new Admin1().setVisible(true);
                         dispose(); 
                     } else {
                         JOptionPane.showMessageDialog(p, "Invalid Username or Password!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -87,7 +91,7 @@ import java.io.IOException;
                 } else if("Librarian".equals(select_role)) {
                     if (validateCredentials(user_name, password)) {
                         JOptionPane.showMessageDialog(p, "Login Successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
-                        new Librarian_dashboard().setVisible(true);
+                       // new Librarian_dashboard().setVisible(true);
                         dispose(); 
                     } else {
                         JOptionPane.showMessageDialog(p, "Invalid Username or Password!", "Error", JOptionPane.ERROR_MESSAGE);

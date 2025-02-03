@@ -1,5 +1,8 @@
 package members_system;
 
+
+
+//import Library_Management_System.AdminDashboard;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -11,7 +14,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.*;
 
-class memberregistration extends JFrame implements ActionListener {
+class aMemberRegistration extends JFrame implements ActionListener {
 
     JTextField firstname_f, lastname_f, contactnumber_f, email_f, permanentaddress_f, homeaddress_f, fathersname_f, mothersname_f, fees_f, Voter_id;
     JComboBox<Integer> dayComboBox, yearComboBox;
@@ -22,8 +25,10 @@ class memberregistration extends JFrame implements ActionListener {
     Timer swapTimer, loginTimer;
     int leftPanelX, rightPanelX;
     int direction = 1;
+    private JTextField usernameField;
+    private JPasswordField passwordField, confirmPasswordField;
 
-    memberregistration() {
+    aMemberRegistration() {
         this.setTitle("Registration Page");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(1000, 700);
@@ -292,17 +297,17 @@ class memberregistration extends JFrame implements ActionListener {
 
         JLabel usernameLabel = new JLabel("Username:");
         usernameLabel.setBounds(50, 150, 100, 30);
-        JTextField usernameField = new JTextField();
+        usernameField = new JTextField();
         usernameField.setBounds(200, 150, 200, 30);
 
         JLabel passwordLabel = new JLabel("Password:");
         passwordLabel.setBounds(50, 200, 100, 30);
-        JPasswordField passwordField = new JPasswordField();
+        passwordField = new JPasswordField();
         passwordField.setBounds(200, 200, 200, 30);
 
         JLabel confirmPasswordLabel = new JLabel("Confirm Password:");
         confirmPasswordLabel.setBounds(50, 250, 150, 30);
-        JPasswordField confirmPasswordField = new JPasswordField();
+        confirmPasswordField = new JPasswordField();
         confirmPasswordField.setBounds(200, 250, 200, 30);
 
         JButton requestMembershipButton = new JButton("Request for Membership");
@@ -310,13 +315,30 @@ class memberregistration extends JFrame implements ActionListener {
         requestMembershipButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String username = usernameField.getText();
                 String password = new String(passwordField.getPassword());
                 String confirmPassword = new String(confirmPasswordField.getPassword());
 
                 if (password.equals(confirmPassword) && !password.isEmpty()) {
-                    JOptionPane.showMessageDialog(memberregistration.this, "Request for membership sent successfully!");
+                    try (BufferedWriter writer = new BufferedWriter(new FileWriter("D:\\learning_java\\Library_Management_System\\memberrequest.txt", true))) {
+                        writer.write(username + ", Requested Membership");
+                        writer.newLine();
+                        JOptionPane.showMessageDialog(aMemberRegistration.this, "Request for membership sent successfully!");
+                    } catch (IOException ex) {
+                        JOptionPane.showMessageDialog(aMemberRegistration.this, "Error saving membership request: " + ex.getMessage());
+                    }
+                    try (BufferedWriter writer = new BufferedWriter(new FileWriter("D:\\learning_java\\Library_Management_System\\Members_with_credentials.txt", true))) {
+                        writer.write(firstname_f.getText() + "," + lastname_f.getText() + "," + contactnumber_f.getText() + "," + email_f.getText() + "," + dayComboBox.getSelectedItem() + "/" +
+                        monthComboBox.getSelectedItem() + "/" + yearComboBox.getSelectedItem() + "," + bloodGroupComboBox.getSelectedItem() + "," + instituteComboBox.getSelectedItem() + "," +
+                        permanentaddress_f.getText() + "," + homeaddress_f.getText() + "," + fathersname_f.getText() + "," + mothersname_f.getText() + "," + membershipComboBox.getSelectedItem() + "," + fees_f.getText()+","+username + ","+password);
+                        writer.newLine();
+                        JOptionPane.showMessageDialog(aMemberRegistration.this, "Request for membership sent successfully!");
+                    } catch (IOException ex) {
+                        JOptionPane.showMessageDialog(aMemberRegistration.this, "Error saving membership request: " + ex.getMessage());
+                    }
+                    
                 } else {
-                    JOptionPane.showMessageDialog(memberregistration.this, "Passwords do not match. Please try again.");
+                    JOptionPane.showMessageDialog(aMemberRegistration.this, "Passwords do not match. Please try again.");
                 }
             }
         });
@@ -332,6 +354,8 @@ class memberregistration extends JFrame implements ActionListener {
         leftPanel.revalidate();
         leftPanel.repaint();
     }
+    
+     
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -358,7 +382,12 @@ class memberregistration extends JFrame implements ActionListener {
         }
     }
 
+
+
     public static void main(String[] args) {
-        new memberregistration();
+        new aMemberRegistration();
     }
-}
+} 
+
+
+

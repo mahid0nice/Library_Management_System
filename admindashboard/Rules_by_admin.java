@@ -1,3 +1,4 @@
+package admindashboard;
 
 import javax.swing.*;
 import java.awt.*;

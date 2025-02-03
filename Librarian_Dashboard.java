@@ -1,5 +1,11 @@
 //package Library_Management_System;
 import javax.swing.*;
+
+import admindashboard.ProfilePanel;
+import admindashboard.UpdateProfileWithPhoto;
+import admindashboard.aNewPage;
+import admindashboard.alogin;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
