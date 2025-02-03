@@ -14,8 +14,8 @@ public class Admin1 extends JFrame implements ActionListener {
             edit_profile, log_out;
     JPanel largestpanel;
     ImageIcon icon, loogo, dashboard;
-    private static List<String> membershipRequests = new ArrayList<>(); // Store usernames
-    private static DefaultListModel<String> requestListModel = new DefaultListModel<>(); // List model for requests
+    private static List<String> membershipRequests = new ArrayList<>(); 
+    private static DefaultListModel<String> requestListModel = new DefaultListModel<>(); 
     private JList<String> requestList;
     private static final String FILE_PATH = "D:\\learning_java\\Library_Management_System\\memberrequest.txt";
 
@@ -108,7 +108,7 @@ public class Admin1 extends JFrame implements ActionListener {
     }
 
     private void showMembershipRequests() {
-        // Read the file and populate the request list
+        
         membershipRequests.clear();
         requestListModel.clear();
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
@@ -124,7 +124,7 @@ public class Admin1 extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(this, "Error reading file: " + ex.getMessage());
         }
 
-        // Display the requests in a new frame
+        
         JFrame requestFrame = new JFrame("Membership Requests");
         requestFrame.setSize(400, 300);
         requestFrame.setLayout(new BorderLayout());
@@ -151,10 +151,10 @@ public class Admin1 extends JFrame implements ActionListener {
             );
 
             if (response == JOptionPane.YES_OPTION) {
-                // Update the file to add ",1" beside the username
+                
                 updateFile(selectedRequest);
 
-                // Remove the request from the list
+                
                 membershipRequests.remove(selectedRequest);
                 requestListModel.removeElement(selectedRequest);
             }
@@ -165,20 +165,18 @@ public class Admin1 extends JFrame implements ActionListener {
 
     private void updateFile(String username) {
         try {
-            // Read the file and update the line with the username
+            
             File file = new File(FILE_PATH);
             BufferedReader reader = new BufferedReader(new FileReader(file));
             StringBuilder content = new StringBuilder();
             String line;
             while ((line = reader.readLine()) != null) {
                 if (line.startsWith(username + ",") || line.equals(username)) {
-                    line = username + ",1"; // Add ",1" to indicate approval
-                }
+                    line = username + ",1"; 
                 content.append(line).append("\n");
+                }
             }
             reader.close();
-
-            // Write the updated content back to the file
             BufferedWriter writer = new BufferedWriter(new FileWriter(file));
             writer.write(content.toString());
             writer.close();
@@ -209,6 +207,9 @@ public class Admin1 extends JFrame implements ActionListener {
             new alogin();
         } else if (e.getSource() == request_membership) {
             showMembershipRequests();
+        } else if(e.getSource()== fees_for_member){
+            ChangeFeesDialog dialog = new ChangeFeesDialog("D:\\learning_java\\Library_Management_System\\fees.txt");
+            dialog.showDialog();
         }
     }
 
