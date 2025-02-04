@@ -108,14 +108,14 @@ class Member_Login extends JFrame {
     }
 
     private boolean validateCredentials(String username, String password) {
-        String memberPasswordFile = "D:\\learning_java\\Library_Management_System\\memberpassword.txt";
+        String memberPasswordFile = "D:\\learning_java\\Library_Management_System\\Members_with_credentials.txt";
         try (BufferedReader bufferedreader = new BufferedReader(new FileReader(memberPasswordFile))) {
             String line;
             while ((line = bufferedreader.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length == 2) {
-                    String storedUsername = parts[0].trim();
-                    String storedPassword = parts[1].trim();
+                if (parts.length == 16) {
+                    String storedUsername = parts[14].trim();
+                    String storedPassword = parts[15].trim();
                     if (username.equals(storedUsername) && password.equals(storedPassword)) {
                         return true; 
                     }
